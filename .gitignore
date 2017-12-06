@@ -1,0 +1,13 @@
+# Solution packages
+
+packages/
+
+# Builds results
+
+[Dd]ebug/
+[Rr]elease/
+[Bb]in/
+
+# Visual Studio 2015/2017 cache/options directory
+
+.vs/
