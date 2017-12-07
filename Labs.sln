@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LabRegex", "LabRegex\LabReg
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskRunner", "TaskRunner\TaskRunner.csproj", "{B46B7450-36A7-4EDB-B57F-E698D0799750}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LabStrings", "LabStrings\LabStrings.csproj", "{3832015D-3A60-4EB0-B0FB-A2D168A168EE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{B46B7450-36A7-4EDB-B57F-E698D0799750}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B46B7450-36A7-4EDB-B57F-E698D0799750}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B46B7450-36A7-4EDB-B57F-E698D0799750}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3832015D-3A60-4EB0-B0FB-A2D168A168EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3832015D-3A60-4EB0-B0FB-A2D168A168EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3832015D-3A60-4EB0-B0FB-A2D168A168EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3832015D-3A60-4EB0-B0FB-A2D168A168EE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
