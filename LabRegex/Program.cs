@@ -14,12 +14,12 @@
     {
         static void Main(string[] args)
         {
-            TaskRunner tr = new TaskRunner(new Dictionary<int, Action>()
+            TaskRunner tr = new TaskRunner(new List<Action>()
             {
-                { 1, () => RunTask1() },
-                { 2, () => RunTask1() },
-                { 3, () => RunTask3() },
-                { 4, () => RunTask4() }
+                { () => RunTask1() },
+                { () => RunTask2() },
+                { () => RunTask3() },
+                { () => RunTask4() }
             });
 
             tr.Start();

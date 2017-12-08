@@ -10,11 +10,11 @@
     {
         static void Main(string[] args)
         {
-            TaskRunner taskRunner = new TaskRunner(new Dictionary<int, Action>()
+            TaskRunner taskRunner = new TaskRunner(new List<Action>()
             {
-                {1, () => RunTask1() },
-                {2, () => RunTask2() },
-                {3, () => RunTask3() }
+                { () => RunTask1() },
+                { () => RunTask2() },
+                { () => RunTask3() }
             });
 
             taskRunner.Start();

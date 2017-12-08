@@ -12,13 +12,13 @@
         /// <summary>
         /// Список запускаемых задач
         /// </summary>
-        private Dictionary<int, Action> tasks;
+        private List<Action> tasks;
 
         /// <summary>
         /// Конструктор класса.
         /// </summary>
         /// <param name="tasks">Список запускаемых задач.</param>
-        public TaskRunner(Dictionary<int, Action> tasks)
+        public TaskRunner(List<Action> tasks)
         {
             this.tasks = tasks;
         }
@@ -51,7 +51,7 @@
                     {
                         Console.WriteLine();
 
-                        tasks[menuItem].Invoke();
+                        tasks[menuItem - 1].Invoke();
 
                         Console.WriteLine();
 
