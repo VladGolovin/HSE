@@ -24,6 +24,15 @@ namespace SimpleTree
             TreeNode node = FindNode(root, 14);
             TreeNode node1 = FindNode(root, 3);
             TreeNode node2 = FindNode(root, 555);
+
+            TreeNode node3 = FindNodeRecursive(root, 14);
+            TreeNode node4 = FindNodeRecursive(root, 3);
+            TreeNode node5 = FindNodeRecursive(root, 555);
+
+            PrintTree(root, 0, 40);
+
+            Console.WriteLine();
+
         }
 
         /// <summary>
@@ -77,7 +86,7 @@ namespace SimpleTree
         }
 
         /// <summary>
-        /// Поиск вершины дерева по информационному полю.
+        /// Поиск вершины дерева по информационному полю (итерационно).
         /// </summary>
         /// <param name="root">Корень.</param>
         /// <param name="info">Значение.</param>
@@ -122,6 +131,55 @@ namespace SimpleTree
             }
 
             return node;
+        }
+
+        /// <summary>
+        /// Поиск вершины дерева по информационному полю (рекурсивно).
+        /// </summary>
+        /// <param name="root">Корень.</param>
+        /// <param name="info">Значение.</param>
+        /// <returns></returns>
+        static TreeNode FindNodeRecursive(TreeNode root, int info)
+        {
+            if (root == null)
+                return null;
+            if (info < root.Info)
+                return FindNodeRecursive(root.Left, info);
+            if (info > root.Info)
+                return FindNodeRecursive(root.Right, info);
+            if (info == root.Info)
+                return root;
+            return null;
+        }
+
+        /// <summary>
+        /// Вывод дерева в консоль.
+        /// </summary>
+        /// <param name="root">Корень.</param>
+        /// <param name="y">Координаты по OX.</param>
+        /// <param name="x">Координаты по OY.</param>
+        static void PrintTree(TreeNode root, int y, int x)
+        {
+            if (root == null)
+                return;
+
+            Console.SetCursorPosition(x, y);
+            Console.Write(root.Info);
+
+            if (root.Left != null)
+            {
+                Console.SetCursorPosition(x - 7, y);
+                Console.Write("+-------");
+            }
+
+            if (root.Right != null)
+            {
+                Console.SetCursorPosition(x + 2, y);
+                Console.Write("-------+");
+            }
+
+            PrintTree(root.Left, y + 1, x - 7);
+            PrintTree(root.Right, y + 1, x + 7);
         }
     }
 }
