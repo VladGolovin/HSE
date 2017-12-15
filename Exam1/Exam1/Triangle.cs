@@ -16,9 +16,6 @@ namespace Exam1
         /// <param name="c">Сторона 3.</param>
         public Triangle(double x, double y, double c)
         {
-            if (!IsExists(x, y, c))
-                throw new Exception("Треугольника с такими сторонами не существует.");
-
             this.x = x;
             this.y = y;
             this.c = c;
@@ -55,7 +52,7 @@ namespace Exam1
         }
 
         /// <summary>
-        /// Периметр.
+        /// Полупериметр.
         /// </summary>
         public static double P(double x, double y, double c)
         {
@@ -93,9 +90,7 @@ namespace Exam1
         /// <returns>Площадь треугольника с указанными сторонами.</returns>
         public static double S(double x, double y, double c)
         {
-            if (!IsExists(x, y, c))
-                throw new Exception("Треугольника с такими сторонами не существует.");
-            return s(x, y, c);
+            return IsExists(x, y, c) ? s(x, y, c) : -1;
         }
         #endregion
 
@@ -129,6 +124,16 @@ namespace Exam1
         #endregion
 
         #region Операторы сравнения
+        public static bool operator ==(Triangle t1, Triangle t2)
+        {
+            return t1.x == t2.x && t1.y == t2.y && t1.c == t2.c;
+        }
+
+        public static bool operator !=(Triangle t1, Triangle t2)
+        {
+            return t1.x != t2.x || t1.y != t2.y || t1.c != t2.c; 
+        }
+
         public static bool operator <(Triangle t1, Triangle t2)
         {
             return t1.S() < t2.S();
@@ -147,6 +152,23 @@ namespace Exam1
         public static bool operator >=(Triangle t1, Triangle t2)
         {
             return t1.S() >= t2.S();
+        }
+
+        public override bool Equals(object obj)
+        {
+            return this == (Triangle)obj;
+        }
+        #endregion
+
+        #region Преобразования к типам
+        public static implicit operator double(Triangle t)
+        {
+            return Triangle.S(t.x, t.y, t.c);
+        }
+
+        public static explicit operator bool(Triangle t)
+        {
+            return IsExists(t.x, t.y, t.c);
         }
         #endregion
     }
