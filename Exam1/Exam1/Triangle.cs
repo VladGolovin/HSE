@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace Exam1
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class Triangle
     {
         /// <summary>
@@ -36,6 +39,30 @@ namespace Exam1
         /// Сторона 3.
         /// </summary>
         private double c { get; set; }
+        
+        public double X
+        {
+            get
+            {
+                return x;
+            }
+        }
+
+        public double Y
+        {
+            get
+            {
+                return y;
+            }
+        }
+
+        public double C
+        {
+            get
+            {
+                return c;
+            }
+        }
         #endregion
 
         #region Методы
@@ -48,7 +75,7 @@ namespace Exam1
         /// <returns>Возвращает true если такой треугольник существует.</returns>
         public static bool IsExists(double x, double y, double c)
         {
-            return (x + y) > c && (y + c) > x && (x + c) > y;
+            return ((x + y) > c && (y + c) > x && (x + c) > y);
         }
 
         /// <summary>
@@ -68,8 +95,13 @@ namespace Exam1
         /// <returns>Площадь треугольника.</returns>
         private static double s(double x, double y, double c)
         {
-            double p = P(x, y, c);
-            return Math.Sqrt(p * (p - x) * (p - y) * (p - c));
+            if (IsExists(x, y, c))
+            {
+                double p = P(x, y, c);
+                return Math.Sqrt(p * (p - x) * (p - y) * (p - c));
+            }
+
+            return -1;
         }
 
         /// <summary>
@@ -90,7 +122,7 @@ namespace Exam1
         /// <returns>Площадь треугольника с указанными сторонами.</returns>
         public static double S(double x, double y, double c)
         {
-            return IsExists(x, y, c) ? s(x, y, c) : -1;
+            return s(x, y, c);
         }
         #endregion
 
@@ -163,7 +195,7 @@ namespace Exam1
         #region Преобразования к типам
         public static implicit operator double(Triangle t)
         {
-            return Triangle.S(t.x, t.y, t.c);
+            return t.S();
         }
 
         public static explicit operator bool(Triangle t)

@@ -38,7 +38,7 @@
         public void SStaticTest()
         {
             Assert.AreEqual(6, Triangle.S(3, 4, 5));
-            Assert.AreEqual(-1, Triangle.S(20, 4, 3));
+            Assert.AreEqual(-1, Triangle.S(20, 3, 4));
         }
 
         /// <summary>
