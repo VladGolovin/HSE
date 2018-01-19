@@ -6,11 +6,12 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Soap;
+using System.Collections;
 
 namespace DotNetLab.WinApp
 {
     [Serializable()]
-    public class PointCollection: System.Collections.CollectionBase
+    public class PointCollection: CollectionBase, IEnumerable, IList
     {
         public Point Add()
         {
@@ -97,5 +98,6 @@ namespace DotNetLab.WinApp
             }
             return null;
         }
+
     }
 }
