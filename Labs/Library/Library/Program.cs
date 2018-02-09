@@ -6,6 +6,7 @@ using System.Windows.Forms;
 
 namespace Library
 {
+
     static class Program
     {
         /// <summary>

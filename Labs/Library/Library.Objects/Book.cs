@@ -5,60 +5,12 @@
     [Serializable]
     public class Book: DataObject
     {
-        private string author;
+        public string Author { get; set; }
 
-        private string name;
+        public string Title { get; set; }
 
-        private int year;
+        public int Year { get; set; }
 
-        private string publishingHouse;
-
-        public string Author
-        {
-            get
-            {
-                return author;
-            }
-            set
-            {
-                this.author = value;
-            }
-        }
-
-        public string Name
-        {
-            get
-            {
-                return name;
-            }
-            set
-            {
-                this.name = value;
-            }
-        }
-
-        public int Year
-        {
-            get
-            {
-                return year;
-            }
-            set
-            {
-                this.year = value;
-            }
-        }
-
-        public string PublishingHouse
-        {
-            get
-            {
-                return publishingHouse;
-            }
-            set
-            {
-                this.publishingHouse = value;
-            }
-        }
+        public string PublishingHouse { get; set; }
     }
 }

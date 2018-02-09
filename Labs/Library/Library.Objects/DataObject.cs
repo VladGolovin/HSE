@@ -3,39 +3,33 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 namespace Library.Objects
 {
+    using System.Reflection;
+
+    [Serializable]
     public abstract class DataObject
     {
-        private Guid primaryKey;
+        public Guid PrimaryKey { get; }
 
-        private bool deleted;
-
-        public Guid PrimaryKey
-        {
-            get
-            {
-                return primaryKey;
-            }
-        }
-
-        public bool Deleted
-        {
-            get
-            {
-                return this.deleted;
-            }
-            set
-            {
-                this.deleted = value;
-            }
-        }
+        public bool Deleted { get; set; }
 
         public DataObject()
         {
-            this.primaryKey = new Guid();
-            this.deleted = false;
+            PrimaryKey = Guid.NewGuid();
+            Deleted = false;
+        }
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
+
+        public override bool Equals(object obj)
+        {
+            return JsonConvert.SerializeObject(obj).Equals(JsonConvert.SerializeObject(this));
         }
     }
 }
