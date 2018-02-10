@@ -3,7 +3,7 @@
     using System;
 
     [Serializable]
-    public class Book: DataObject
+    public class Book: DataService.DataObject
     {
         public string Author { get; set; }
 

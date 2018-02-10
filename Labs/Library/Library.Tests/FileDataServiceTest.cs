@@ -118,13 +118,32 @@ namespace Library.Tests
             book.PublishingHouse = "Фламинго";
             book.Year = 1867;
 
+            Book book1 = new Book();
+            book.Author = "А.С. Пушкин";
+            book.Title = "Капитанская дочка";
+            book.PublishingHouse = "Фламинго";
+            book.Year = 1834;
+
+            Book book2 = new Book();
+            book.Author = "И.С. Тургенев";
+            book.Title = "Отцы и дети";
+            book.PublishingHouse = "Фламинго";
+            book.Year = 1862;
+
+            Book book3 = new Book();
+            book.Author = "И.С. Тургенев";
+            book.Title = "Записки охотника";
+            book.PublishingHouse = "Фламинго";
+            book.Year = 1852;
+
             var bf = new BinaryFormatter();
 
             using (FileStream fs = new FileStream(ds.GetFileName(typeof(Book)), FileMode.Open))
             {
                 bf.Serialize(fs, book);
-
-                fs.Close();
+                bf.Serialize(fs, book1);
+                bf.Serialize(fs, book2);
+                bf.Serialize(fs, book3);
             }
 
             ds.DeleteObject(book);
@@ -132,8 +151,6 @@ namespace Library.Tests
             using (FileStream fs = new FileStream(ds.GetFileName(typeof(Book)), FileMode.Open))
             {
                 var deletedBook = (Book)bf.Deserialize(fs);
-
-                fs.Close();
 
                 Assert.AreEqual(true, deletedBook.Deleted);
             }

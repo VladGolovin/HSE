@@ -1,16 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Library.DataService
 {
-    using Objects;
-
     public interface IDataService
     {
-        IEnumerable<T> LoadObjects<T>();
+        IEnumerable<T> LoadObjects<T>() where T: DataObject;
 
         void InsertObject(DataObject insertObject);
 
@@ -18,6 +13,6 @@ namespace Library.DataService
 
         void DeleteObject(DataObject deletedObject);
 
-        IEnumerable<T> Query<T>(Func<T, bool> func);
+        IEnumerable<T> Query<T>(Func<T, bool> func) where T: DataObject;
     }
 }

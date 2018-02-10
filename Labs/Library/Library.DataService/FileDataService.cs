@@ -1,15 +1,10 @@
 ﻿namespace Library.DataService
 {
     using System;
-    using System.Linq;
     using System.Collections.Generic;
-    using System.Diagnostics.Contracts;
     using System.IO;
     using System.Runtime.Serialization;
     using System.Runtime.Serialization.Formatters.Binary;
-
-    using Objects;
-    using System.Linq.Expressions;
 
     public class FileDataService : IDataService
     {
@@ -30,10 +25,8 @@
             return $"t_{type.Name}.data";
         }
 
-        public IEnumerable<T> LoadObjects<T>()
+        public IEnumerable<T> LoadObjects<T>() where T: DataObject
         {
-            Contract.Assert(typeof(T).IsSubclassOf(typeof(DataObject)), $"Передаваемый тип должен наследоваться от {typeof(DataObject).FullName}");
-
             List<T> dataObjects = new List<T>();
 
             using (FileStream fs = new FileStream(GetFileName(typeof(T)), FileMode.OpenOrCreate))
@@ -42,15 +35,13 @@
                 {
                     do
                     {
-                        var dataObject = formatter.Deserialize(fs);
+                        var dataObject = (T)formatter.Deserialize(fs);
 
-                        if (!((DataObject)dataObject).Deleted)
+                        if (!dataObject.Deleted)
                         {
-                            dataObjects.Add((T)dataObject);
+                            dataObjects.Add(dataObject);
                         }
                     } while (fs.Position != fs.Length);
-                    
-                    fs.Close();
                 }
             }
 
@@ -62,8 +53,6 @@
             using (FileStream fs = new FileStream(GetFileName(insertObject.GetType()), FileMode.Append))
             {
                 formatter.Serialize(fs, insertObject);
-
-                fs.Close();
             }
         }
 
@@ -90,16 +79,14 @@
 
                         backStep = fs.Position;
                     } while (fs.Position != fs.Length);
-
-                    fs.Close();
                 }
             }
         }
 
         public void DeleteObject(DataObject deletedObject)
         {
-            List<DataObject> objects = new List<DataObject>();
             int deletedObjects = 0;
+            int objectsCount = 0;
             string fileName = GetFileName(deletedObject.GetType());
 
             using (FileStream fs = new FileStream(fileName, FileMode.Open))
@@ -112,13 +99,6 @@
                     {
                         var dataObject = (DataObject)formatter.Deserialize(fs);
 
-                        objects.Add(dataObject);
-
-                        if (dataObject.Deleted)
-                        {
-                            deletedObjects++;
-                        }
-
                         if (dataObject.PrimaryKey.Equals(deletedObject.PrimaryKey))
                         {
                             fs.Position = backStep;
@@ -126,35 +106,45 @@
                             dataObject.Deleted = true;
                             formatter.Serialize(fs, dataObject);
 
+                        }
+
+                        if (dataObject.Deleted)
+                        {
                             deletedObjects++;
                         }
+                        objectsCount++;
 
                         backStep = fs.Position;
                     } while (fs.Position != fs.Length);
-
-                    fs.Close();
                 }
             }
 
-            if (objects.Count/2 <= deletedObjects)
+            if (objectsCount / 2 <= deletedObjects)
             {
-                using (FileStream fs = new FileStream(fileName, FileMode.Create))
+                string tempFileName = $"temp_{fileName}";
+                using (FileStream fs = new FileStream(fileName, FileMode.Open))
                 {
-                    objects.ForEach(dataObject =>
+                    using (FileStream fs_temp = new FileStream(tempFileName, FileMode.Create))
                     {
-                        if (!dataObject.Deleted)
+                        while (fs.Position != fs.Length)
                         {
-                            formatter.Serialize(fs, dataObject);
+                            var dataObject = (DataObject)formatter.Deserialize(fs);
+
+                            if (!dataObject.Deleted)
+                            {
+                                formatter.Serialize(fs_temp, dataObject);
+                            }
                         }
-                    });
+                    }
                 }
+
+                File.Delete(fileName);
+                File.Move(tempFileName, fileName);
             }
         }
 
-        public IEnumerable<T> Query<T>(Func<T, bool> func)
+        public IEnumerable<T> Query<T>(Func<T, bool> func) where T: DataObject
         {
-            Contract.Assert(typeof(T).IsSubclassOf(typeof(DataObject)), $"Передаваемый тип должен наследоваться от {typeof(DataObject).FullName}");
-
             List<T> dataObjects = new List<T>();
 
             using (FileStream fs = new FileStream(GetFileName(typeof(T)), FileMode.OpenOrCreate))
@@ -163,10 +153,10 @@
                 {
                     do
                     {
-                        var dataObject = formatter.Deserialize(fs);
-                        if (!((DataObject)dataObject).Deleted && func((T)dataObject))
+                        var dataObject = (T)formatter.Deserialize(fs);
+                        if (!dataObject.Deleted && func(dataObject))
                         {
-                            dataObjects.Add((T)dataObject);
+                            dataObjects.Add(dataObject);
                         }
                     } while (fs.Position != fs.Length);
 

@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 
-namespace Library.Objects
+namespace Library.DataService
 {
     using System.Reflection;
 

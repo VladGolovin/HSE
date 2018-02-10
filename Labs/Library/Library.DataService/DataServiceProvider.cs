@@ -8,11 +8,11 @@ namespace Library.DataService
 {
     public class DataServiceProvider
     {
-        private static FileDataService dataService = new FileDataService();
+        private static IDataService dataService = new FileDataService();
 
         private DataServiceProvider() { }
 
-        public static FileDataService DataService
+        public static IDataService DataService
         {
             get
             {
