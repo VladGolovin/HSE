@@ -14,9 +14,10 @@ namespace TuringMachine
 
         int pos;
 
-        public Executor()
+        public Executor(Dictionary<char, Dictionary<string, Command>> commands)
         {
             clearTape();
+            this.commands = commands;
         }
 
         public string Value
@@ -34,7 +35,7 @@ namespace TuringMachine
                 
                 StringBuilder sb = new StringBuilder();
                 
-                while (!Tape[index].Equals('_') || index < Tape.Length)
+                while (index < Tape.Length || !Tape[index].Equals('_'))
                 {
                     sb.Append(Tape[index]);
                     index++;
@@ -61,6 +62,7 @@ namespace TuringMachine
         public void Run()
         {
             string state = commands[Tape[pos]].FirstOrDefault().Key;
+
             while (state != "q0")
             {
                 var command = commands[Tape[pos]][state];
