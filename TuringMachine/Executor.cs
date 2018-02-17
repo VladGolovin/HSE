@@ -35,7 +35,7 @@ namespace TuringMachine
                 
                 StringBuilder sb = new StringBuilder();
                 
-                while (index < Tape.Length || !Tape[index].Equals('_'))
+                while (index < Tape.Length && !Tape[index].Equals('_'))
                 {
                     sb.Append(Tape[index]);
                     index++;
@@ -75,7 +75,7 @@ namespace TuringMachine
                         pos--;
                         break;
                     case Direction.Right:
-                        pos--;
+                        pos++;
                         break;
                     default:
                         break;
