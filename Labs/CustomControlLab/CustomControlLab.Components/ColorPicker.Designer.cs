@@ -101,6 +101,7 @@
             this.DecCheck.TabStop = true;
             this.DecCheck.Text = "Dec";
             this.DecCheck.UseVisualStyleBackColor = true;
+            this.DecCheck.CheckedChanged += new System.EventHandler(this.DecCheck_CheckedChanged);
             // 
             // HexCheck
             // 
@@ -112,6 +113,7 @@
             this.HexCheck.TabStop = true;
             this.HexCheck.Text = "Hex";
             this.HexCheck.UseVisualStyleBackColor = true;
+            this.HexCheck.CheckedChanged += new System.EventHandler(this.HexCheck_CheckedChanged);
             // 
             // ColorPalette
             // 
