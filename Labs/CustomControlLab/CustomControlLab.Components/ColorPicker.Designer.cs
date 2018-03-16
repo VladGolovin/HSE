@@ -42,61 +42,77 @@
             // 
             // redColorPickerParameter
             // 
-            this.redColorPickerParameter.Location = new System.Drawing.Point(65, 15);
+            this.redColorPickerParameter.CurrentInputMode = CustomControlLab.Components.tInputMode.Dec;
+            this.redColorPickerParameter.Location = new System.Drawing.Point(87, 18);
+            this.redColorPickerParameter.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.redColorPickerParameter.MaxLength = 3;
             this.redColorPickerParameter.Name = "redColorPickerParameter";
-            this.redColorPickerParameter.Size = new System.Drawing.Size(78, 20);
+            this.redColorPickerParameter.Size = new System.Drawing.Size(103, 22);
             this.redColorPickerParameter.TabIndex = 0;
-            this.redColorPickerParameter.TextChanged += new System.EventHandler(this.colorChanged);
+            this.redColorPickerParameter.Text = "0";
+            this.redColorPickerParameter.Value = 0;
             // 
             // greenColorPickerParameter
             // 
-            this.greenColorPickerParameter.Location = new System.Drawing.Point(65, 42);
+            this.greenColorPickerParameter.CurrentInputMode = CustomControlLab.Components.tInputMode.Dec;
+            this.greenColorPickerParameter.Location = new System.Drawing.Point(87, 52);
+            this.greenColorPickerParameter.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.greenColorPickerParameter.MaxLength = 3;
             this.greenColorPickerParameter.Name = "greenColorPickerParameter";
-            this.greenColorPickerParameter.Size = new System.Drawing.Size(78, 20);
+            this.greenColorPickerParameter.Size = new System.Drawing.Size(103, 22);
             this.greenColorPickerParameter.TabIndex = 1;
-            this.greenColorPickerParameter.TextChanged += new System.EventHandler(this.colorChanged);
+            this.greenColorPickerParameter.Text = "0";
+            this.greenColorPickerParameter.Value = 0;
             // 
             // blueColorPickerParameter
             // 
-            this.blueColorPickerParameter.Location = new System.Drawing.Point(65, 69);
+            this.blueColorPickerParameter.CurrentInputMode = CustomControlLab.Components.tInputMode.Dec;
+            this.blueColorPickerParameter.Location = new System.Drawing.Point(87, 85);
+            this.blueColorPickerParameter.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.blueColorPickerParameter.MaxLength = 3;
             this.blueColorPickerParameter.Name = "blueColorPickerParameter";
-            this.blueColorPickerParameter.Size = new System.Drawing.Size(78, 20);
+            this.blueColorPickerParameter.Size = new System.Drawing.Size(103, 22);
             this.blueColorPickerParameter.TabIndex = 2;
-            this.blueColorPickerParameter.TextChanged += new System.EventHandler(this.colorChanged);
+            this.blueColorPickerParameter.Text = "0";
+            this.blueColorPickerParameter.Value = 0;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(5, 15);
+            this.label1.Location = new System.Drawing.Point(7, 18);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(55, 13);
+            this.label1.Size = new System.Drawing.Size(70, 17);
             this.label1.TabIndex = 3;
             this.label1.Text = "Красный:";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(5, 42);
+            this.label2.Location = new System.Drawing.Point(7, 52);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(55, 13);
+            this.label2.Size = new System.Drawing.Size(71, 17);
             this.label2.TabIndex = 4;
             this.label2.Text = "Зелёный:";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(5, 69);
+            this.label3.Location = new System.Drawing.Point(7, 85);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(41, 13);
+            this.label3.Size = new System.Drawing.Size(53, 17);
             this.label3.TabIndex = 5;
             this.label3.Text = "Синий:";
             // 
             // DecCheck
             // 
             this.DecCheck.AutoSize = true;
-            this.DecCheck.Location = new System.Drawing.Point(8, 117);
+            this.DecCheck.Location = new System.Drawing.Point(11, 144);
+            this.DecCheck.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.DecCheck.Name = "DecCheck";
-            this.DecCheck.Size = new System.Drawing.Size(45, 17);
+            this.DecCheck.Size = new System.Drawing.Size(54, 21);
             this.DecCheck.TabIndex = 7;
             this.DecCheck.TabStop = true;
             this.DecCheck.Text = "Dec";
@@ -106,9 +122,10 @@
             // HexCheck
             // 
             this.HexCheck.AutoSize = true;
-            this.HexCheck.Location = new System.Drawing.Point(65, 117);
+            this.HexCheck.Location = new System.Drawing.Point(87, 144);
+            this.HexCheck.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.HexCheck.Name = "HexCheck";
-            this.HexCheck.Size = new System.Drawing.Size(44, 17);
+            this.HexCheck.Size = new System.Drawing.Size(53, 21);
             this.HexCheck.TabIndex = 8;
             this.HexCheck.TabStop = true;
             this.HexCheck.Text = "Hex";
@@ -119,16 +136,16 @@
             // 
             this.ColorPalette.AccessibleRole = System.Windows.Forms.AccessibleRole.Alert;
             this.ColorPalette.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.ColorPalette.Location = new System.Drawing.Point(158, 14);
+            this.ColorPalette.Location = new System.Drawing.Point(211, 17);
+            this.ColorPalette.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.ColorPalette.Name = "ColorPalette";
-            this.ColorPalette.Size = new System.Drawing.Size(120, 120);
+            this.ColorPalette.Size = new System.Drawing.Size(160, 148);
             this.ColorPalette.TabIndex = 9;
-            this.ColorPalette.Text = "label4";
             this.ColorPalette.Click += new System.EventHandler(this.label4_Click);
             // 
             // ColorPicker
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.ColorPalette);
             this.Controls.Add(this.HexCheck);
@@ -139,8 +156,9 @@
             this.Controls.Add(this.blueColorPickerParameter);
             this.Controls.Add(this.greenColorPickerParameter);
             this.Controls.Add(this.redColorPickerParameter);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "ColorPicker";
-            this.Size = new System.Drawing.Size(293, 149);
+            this.Size = new System.Drawing.Size(391, 183);
             this.ResumeLayout(false);
             this.PerformLayout();
 
