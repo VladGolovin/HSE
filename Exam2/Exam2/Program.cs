@@ -18,11 +18,15 @@ namespace Exam2
 
             collection.Add(new Money(rnd.Next(0, 100), rnd.Next(0, 100)));
 
+            collection.Add(new Money(rnd.Next(0, 100), rnd.Next(0, 100)));
+
             PrintCollection(collection);
 
             var moneys = collection.Where(pair => pair.GetType() == typeof(Money)).Select(pair => (Money)pair).ToList();
 
+            Console.WriteLine($"Среднее арифмитическое: {Avarage(moneys)}");
 
+            Console.ReadKey();
         }
 
         public static void PrintCollection(List<Pair> collection)
@@ -33,9 +37,16 @@ namespace Exam2
             }
         }
 
-        public static long Avarage(List<Money> moneys)
+        public static double Avarage(List<Money> moneys)
         {
+            double sum = 0;
 
+            foreach (var money in moneys)
+            {
+                sum += money.ToDouble();
+            }
+
+            return sum / moneys.Count();
         }
     }
 }

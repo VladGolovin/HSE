@@ -16,7 +16,7 @@ namespace Exam2
 
         public int First { get; set; }
 
-        public int Second { get; set; }
+        public virtual int Second { get; set; }
 
         public override string ToString()
         {

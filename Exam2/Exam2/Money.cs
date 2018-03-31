@@ -17,5 +17,10 @@ namespace Exam2
         {
             return $"Рубли: {First}, Копейки: {Second}";
         }
+
+        public double ToDouble()
+        {
+            return First + (double)Second / 100;
+        }
     }
 }
