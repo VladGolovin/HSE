@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{D5787538-B976-4AFA-88A5-8D321D175F50}</ProjectGuid>
+    <ProjectGuid>{8A54AE3B-697B-4677-9B41-B6392EC8A774}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>TuringMachine</RootNamespace>
-    <AssemblyName>TuringMachine</AssemblyName>
+    <RootNamespace>Exam2</RootNamespace>
+    <AssemblyName>Exam2</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -41,18 +41,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Command.cs" />
-    <Compile Include="CommandReader.cs" />
-    <Compile Include="Direction.cs" />
-    <Compile Include="Executor.cs" />
+    <Compile Include="Money.cs" />
+    <Compile Include="Pair.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="App_Data\Commands.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

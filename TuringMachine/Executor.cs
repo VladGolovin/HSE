@@ -10,11 +10,14 @@ namespace TuringMachine
     {
         char[] Tape = new char[100];
 
-        int carriagePosition;
+        Dictionary<char, Dictionary<string, Command>> commands = new Dictionary<char, Dictionary<string, Command>>();
 
-        public Executor()
+        int pos;
+
+        public Executor(Dictionary<char, Dictionary<string, Command>> commands)
         {
             clearTape();
+            this.commands = commands;
         }
 
         public string Value
@@ -32,7 +35,7 @@ namespace TuringMachine
                 
                 StringBuilder sb = new StringBuilder();
                 
-                while (!Tape[index].Equals('_') || index < Tape.Length)
+                while (index < Tape.Length && !Tape[index].Equals('_'))
                 {
                     sb.Append(Tape[index]);
                     index++;
@@ -44,18 +47,43 @@ namespace TuringMachine
             {
                 clearTape();
 
-                int _carriagePostion = carriagePosition;
+                int _carriagePostion = pos;
 
                 for (int i = 0; i < value.Length; i++)
                 {
-                    Tape[carriagePosition] = value[i];
-                    carriagePosition++;
+                    Tape[pos] = value[i];
+                    pos++;
                 }
 
-                carriagePosition = _carriagePostion;
+                pos = _carriagePostion;
             }
         }
 
+        public void Run()
+        {
+            string state = commands[Tape[pos]].FirstOrDefault().Key;
+
+            while (state != "q0")
+            {
+                var command = commands[Tape[pos]][state];
+
+                Tape[pos] = command.NewSimbol;
+
+                switch (command.Direction)
+                {
+                    case Direction.Left:
+                        pos--;
+                        break;
+                    case Direction.Right:
+                        pos++;
+                        break;
+                    default:
+                        break;
+                }
+
+                state = command.NewState;
+            }
+        }
 
         private void clearTape()
         {
@@ -64,7 +92,7 @@ namespace TuringMachine
                 Tape[i] = '_';
             }
 
-            carriagePosition = 40;
+            pos = 40;
         }
     }
 }
