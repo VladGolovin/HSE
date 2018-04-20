@@ -127,5 +127,15 @@ namespace Lab1.MyPaint
         {
             LayoutMdi(MdiLayout.TileVertical);
         }
+
+        private void звездаToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var starSetting = new StarSettings();
+            
+            if (starSetting.ShowDialog() == DialogResult.OK)
+            {
+                ((Canvas)ActiveMdiChild).PrintStar(starSetting.Radius, starSetting.PointsCount);
+            }
+        }
     }
 }

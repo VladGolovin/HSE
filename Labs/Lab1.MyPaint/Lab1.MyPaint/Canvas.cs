@@ -26,7 +26,7 @@ namespace Lab1.MyPaint
             set
             {
                 pictureBox1.Width = value;
-                Bitmap tbmp = new Bitmap(value, pictureBox1.Width);
+                Bitmap tbmp = new Bitmap(value, pictureBox1.Height);
                 Graphics g = Graphics.FromImage(tbmp);
                 g.Clear(Color.White);
                 g.DrawImage(bmp, new Point(0, 0));
@@ -77,6 +77,15 @@ namespace Lab1.MyPaint
 
                 pictureBox1.Invalidate();
             }
+        }
+
+        public void PrintStar(int radius, int pointCount)
+        {
+            Graphics g = Graphics.FromImage(bmp);
+
+            g.DrawStar(new Pen(MainForm.CurColor, MainForm.CurWidth), pointCount, radius, pictureBox1.Width / 2, pictureBox1.Height / 2);
+
+            pictureBox1.Invalidate();
         }
 
         private void pictureBox1_MouseDown(object sender, MouseEventArgs e)

@@ -48,14 +48,15 @@
             this.справкиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.оПрограммеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
-            this.txtBrushSize = new System.Windows.Forms.ToolStripTextBox();
             this.toolStripDropDownButton1 = new System.Windows.Forms.ToolStripDropDownButton();
             this.RedColorItem = new System.Windows.Forms.ToolStripMenuItem();
             this.BlueColorItem = new System.Windows.Forms.ToolStripMenuItem();
             this.GreenColorItem = new System.Windows.Forms.ToolStripMenuItem();
             this.другойToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
+            this.txtBrushSize = new System.Windows.Forms.ToolStripTextBox();
+            this.звездаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -135,7 +136,8 @@
             // рисунокToolStripMenuItem
             // 
             this.рисунокToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.размерХолстаToolStripMenuItem});
+            this.размерХолстаToolStripMenuItem,
+            this.звездаToolStripMenuItem});
             this.рисунокToolStripMenuItem.Name = "рисунокToolStripMenuItem";
             this.рисунокToolStripMenuItem.Size = new System.Drawing.Size(65, 20);
             this.рисунокToolStripMenuItem.Text = "Рисунок";
@@ -215,23 +217,6 @@
             this.toolStrip1.TabIndex = 2;
             this.toolStrip1.Text = "toolStrip1";
             // 
-            // toolStripSeparator3
-            // 
-            this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 25);
-            // 
-            // toolStripLabel1
-            // 
-            this.toolStripLabel1.Name = "toolStripLabel1";
-            this.toolStripLabel1.Size = new System.Drawing.Size(41, 22);
-            this.toolStripLabel1.Text = "Кисть:";
-            // 
-            // txtBrushSize
-            // 
-            this.txtBrushSize.Name = "txtBrushSize";
-            this.txtBrushSize.Size = new System.Drawing.Size(100, 25);
-            this.txtBrushSize.TextChanged += new System.EventHandler(this.txtBrushSize_TextChanged);
-            // 
             // toolStripDropDownButton1
             // 
             this.toolStripDropDownButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
@@ -250,7 +235,7 @@
             // 
             this.RedColorItem.Image = global::Lab1.MyPaint.MyPaintResources.Red;
             this.RedColorItem.Name = "RedColorItem";
-            this.RedColorItem.Size = new System.Drawing.Size(152, 22);
+            this.RedColorItem.Size = new System.Drawing.Size(123, 22);
             this.RedColorItem.Text = "Красный";
             this.RedColorItem.Click += new System.EventHandler(this.RedColorItem_Click);
             // 
@@ -258,7 +243,7 @@
             // 
             this.BlueColorItem.Image = ((System.Drawing.Image)(resources.GetObject("BlueColorItem.Image")));
             this.BlueColorItem.Name = "BlueColorItem";
-            this.BlueColorItem.Size = new System.Drawing.Size(152, 22);
+            this.BlueColorItem.Size = new System.Drawing.Size(123, 22);
             this.BlueColorItem.Text = "Синий";
             this.BlueColorItem.Click += new System.EventHandler(this.BlueColorItem_Click);
             // 
@@ -266,16 +251,40 @@
             // 
             this.GreenColorItem.Image = global::Lab1.MyPaint.MyPaintResources.Green;
             this.GreenColorItem.Name = "GreenColorItem";
-            this.GreenColorItem.Size = new System.Drawing.Size(152, 22);
+            this.GreenColorItem.Size = new System.Drawing.Size(123, 22);
             this.GreenColorItem.Text = "Зелёный";
             this.GreenColorItem.Click += new System.EventHandler(this.GreenColorItem_Click);
             // 
             // другойToolStripMenuItem
             // 
             this.другойToolStripMenuItem.Name = "другойToolStripMenuItem";
-            this.другойToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.другойToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
             this.другойToolStripMenuItem.Text = "Другой...";
             this.другойToolStripMenuItem.Click += new System.EventHandler(this.другойToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 25);
+            // 
+            // toolStripLabel1
+            // 
+            this.toolStripLabel1.Name = "toolStripLabel1";
+            this.toolStripLabel1.Size = new System.Drawing.Size(41, 22);
+            this.toolStripLabel1.Text = "Кисть:";
+            // 
+            // txtBrushSize
+            // 
+            this.txtBrushSize.Name = "txtBrushSize";
+            this.txtBrushSize.Size = new System.Drawing.Size(100, 25);
+            this.txtBrushSize.TextChanged += new System.EventHandler(this.txtBrushSize_TextChanged);
+            // 
+            // звездаToolStripMenuItem
+            // 
+            this.звездаToolStripMenuItem.Name = "звездаToolStripMenuItem";
+            this.звездаToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
+            this.звездаToolStripMenuItem.Text = "Звезда...";
+            this.звездаToolStripMenuItem.Click += new System.EventHandler(this.звездаToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -326,6 +335,7 @@
         private System.Windows.Forms.ToolStripMenuItem BlueColorItem;
         private System.Windows.Forms.ToolStripMenuItem GreenColorItem;
         private System.Windows.Forms.ToolStripMenuItem другойToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem звездаToolStripMenuItem;
     }
 }
 
