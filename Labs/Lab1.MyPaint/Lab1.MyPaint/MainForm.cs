@@ -41,6 +41,7 @@ namespace Lab1.MyPaint
         private void рисунокToolStripMenuItem_DropDownOpening(object sender, EventArgs e)
         {
             размерХолстаToolStripMenuItem.Enabled = ActiveMdiChild != null;
+            звездаToolStripMenuItem.Enabled = ActiveMdiChild != null;
         }
 
         private void размерХолстаToolStripMenuItem_Click(object sender, EventArgs e)
@@ -99,10 +100,11 @@ namespace Lab1.MyPaint
         {
             OpenFileDialog dlg = new OpenFileDialog();
             dlg.Filter = "Windows Bitmap (*.bmp)|*.bmp| Файлы JPEG (*.jpeg, *.jpg)|*.jpeg;*.jpg|Все файлы ()*.*|*.*";
+            ImageFormat[] ff = { ImageFormat.Bmp, ImageFormat.Jpeg };
 
             if (dlg.ShowDialog() == DialogResult.OK)
             {
-                Canvas frmChild = new Canvas(dlg.FileName);
+                Canvas frmChild = new Canvas(dlg.FileName, ff[dlg.FilterIndex - 1]);
                 frmChild.MdiParent = this;
                 frmChild.Show();
             }
@@ -130,12 +132,35 @@ namespace Lab1.MyPaint
 
         private void звездаToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var starSetting = new StarSettings();
+            var canvas = (Canvas)ActiveMdiChild;
+
+            var starSetting = new StarSettingsEditor(canvas.StarSettings);
             
             if (starSetting.ShowDialog() == DialogResult.OK)
             {
-                ((Canvas)ActiveMdiChild).PrintStar(starSetting.Radius, starSetting.PointsCount);
+                canvas.CurrentTool = Canvas.CanvasTool.Star;
             }
+        }
+
+        private void toolStripDropDownButton1_Click(object sender, EventArgs e)
+        {
+            ((Canvas)ActiveMdiChild).CurrentTool = Canvas.CanvasTool.Pen;
+        }
+
+        private void файлToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void файлToolStripMenuItem_DropDownOpening(object sender, EventArgs e)
+        {
+            сохранитьToolStripMenuItem.Enabled = ActiveMdiChild != null;
+            сохранитьКакToolStripMenuItem.Enabled = ActiveMdiChild != null;
+        }
+
+        private void сохранитьToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ((Canvas)ActiveMdiChild).Save();
         }
     }
 }

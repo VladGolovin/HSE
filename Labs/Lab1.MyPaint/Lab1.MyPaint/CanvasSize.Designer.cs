@@ -61,6 +61,7 @@
             this.widthInput.Name = "widthInput";
             this.widthInput.Size = new System.Drawing.Size(100, 20);
             this.widthInput.TabIndex = 2;
+            this.widthInput.Text = "1024";
             // 
             // heightInput
             // 
@@ -68,6 +69,7 @@
             this.heightInput.Name = "heightInput";
             this.heightInput.Size = new System.Drawing.Size(100, 20);
             this.heightInput.TabIndex = 3;
+            this.heightInput.Text = "768";
             // 
             // btnOK
             // 

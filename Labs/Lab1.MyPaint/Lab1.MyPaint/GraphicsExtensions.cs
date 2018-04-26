@@ -10,35 +10,37 @@ namespace Lab1.MyPaint
 
     public static class GraphicsExtensions
     {
-        public static void DrawStar(this Graphics graphics, Pen pen, int pointCount, int radius, int ox, int oy)
+        public static void DrawStar(this Graphics graphics, Pen pen, int pointCount, int radius, int ox, int oy, bool filled)
         {
             var points = new List<Point>();
 
             var points1 = new List<Point>();
 
-            double increment = Math.PI * 2 / pointCount;
+            double angle = Math.PI * 2 / pointCount;
 
-            double i1 = increment;
+            double inner = angle;
 
-            for (double i = 0; i < Math.PI*2; i = i + increment)
+            for (double outer = angle / 2; outer < Math.PI*2 + (angle / 2); outer = outer + angle)
             {
-                double x = ox + radius * Math.Sin(i);
+                double xOuter = ox + radius * Math.Sin(outer);
 
-                double y = oy + radius * Math.Cos(i);
+                double yOuter = oy + radius * Math.Cos(outer);
 
-                double x1 = ox + radius / 2 * Math.Sin(i1);
+                double xInner = ox + radius / 2 * Math.Sin(inner);
 
-                double y1 = oy + radius / 2 * Math.Cos(i1);
+                double yInner = oy + radius / 2 * Math.Cos(inner);
 
-                points.Add(new Point(Convert.ToInt32(x), Convert.ToInt32(y)));
+                points.Add(new Point(Convert.ToInt32(xOuter), Convert.ToInt32(yOuter)));
 
-                points1.Add(new Point(Convert.ToInt32(x1), Convert.ToInt32(y1)));
+                points.Add(new Point(Convert.ToInt32(xInner), Convert.ToInt32(yInner)));
 
-                i1 += increment;
+                inner += angle;
             }
 
-            graphics.DrawPolygon(pen, points.ToArray());
-            graphics.DrawPolygon(pen, points1.ToArray());
+            if (filled)
+                graphics.FillPolygon(new SolidBrush(pen.Color), points.ToArray());
+            else
+                graphics.DrawPolygon(pen, points.ToArray());
         }
     }
 }

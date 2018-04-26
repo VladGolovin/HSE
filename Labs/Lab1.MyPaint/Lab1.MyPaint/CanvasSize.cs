@@ -39,6 +39,9 @@ namespace Lab1.MyPaint
         public CanvasSize()
         {
             InitializeComponent();
+
+            CanvasWidth = 1024;
+            CanvasHeight = 768;
         }
 
         private void label2_Click(object sender, EventArgs e)

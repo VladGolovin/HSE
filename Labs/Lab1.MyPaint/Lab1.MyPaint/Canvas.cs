@@ -13,9 +13,19 @@ namespace Lab1.MyPaint
 {
     public partial class Canvas : Form
     {
-        private int oldX, oldY;
+        private int oldX;
+
+        private int oldY;
 
         private Bitmap bmp;
+
+        private string FileName;
+
+        private ImageFormat ImageFormat;
+
+        public StarSettings StarSettings = new StarSettings();
+
+        public CanvasTool CurrentTool { get; set; }
 
         public int CanvasWidth
         {
@@ -53,6 +63,14 @@ namespace Lab1.MyPaint
             }
         }
 
+        public void Save()
+        {
+            if (string.IsNullOrEmpty(FileName))
+                SaveAs();
+            else
+                bmp.Save(FileName, ImageFormat);
+        }
+
         public void SaveAs()
         {
             SaveFileDialog dlg = new SaveFileDialog();
@@ -62,13 +80,16 @@ namespace Lab1.MyPaint
             ImageFormat[] ff = { ImageFormat.Bmp, ImageFormat.Jpeg };
             if (dlg.ShowDialog() == DialogResult.OK)
             {
-                bmp.Save(dlg.FileName, ff[dlg.FilterIndex - 1]);
+                FileName = dlg.FileName;
+                ImageFormat = ff[dlg.FilterIndex - 1];
+
+                bmp.Save(FileName, ImageFormat);             
             }
         }
 
         private void pictureBox1_MouseMove(object sender, MouseEventArgs e)
         {
-            if (e.Button == MouseButtons.Left)
+            if (CurrentTool == CanvasTool.Pen && e.Button == MouseButtons.Left)
             {
                 Graphics g = Graphics.FromImage(bmp);
                 g.DrawLine(new Pen(MainForm.CurColor, MainForm.CurWidth), oldX, oldY, e.X, e.Y);
@@ -78,16 +99,7 @@ namespace Lab1.MyPaint
                 pictureBox1.Invalidate();
             }
         }
-
-        public void PrintStar(int radius, int pointCount)
-        {
-            Graphics g = Graphics.FromImage(bmp);
-
-            g.DrawStar(new Pen(MainForm.CurColor, MainForm.CurWidth), pointCount, radius, pictureBox1.Width / 2, pictureBox1.Height / 2);
-
-            pictureBox1.Invalidate();
-        }
-
+        
         private void pictureBox1_MouseDown(object sender, MouseEventArgs e)
         {
             oldX = e.X;
@@ -100,9 +112,23 @@ namespace Lab1.MyPaint
 
             bmp = new Bitmap(ClientSize.Width, ClientSize.Height);
             pictureBox1.Image = bmp;
+
+            CurrentTool = CanvasTool.Pen;
         }
 
-        public Canvas(String FileName)
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            if (CurrentTool == CanvasTool.Star)
+            {
+                Graphics g = Graphics.FromImage(bmp);
+
+                g.DrawStar(new Pen(MainForm.CurColor, MainForm.CurWidth), StarSettings.PointsCount, StarSettings.Radius, ((MouseEventArgs)e).X, ((MouseEventArgs)e).Y, StarSettings.Filled);
+
+                pictureBox1.Invalidate();
+            }
+        }
+
+        public Canvas(String FileName, ImageFormat format)
         {
             InitializeComponent();
             bmp = new Bitmap(FileName);
@@ -110,6 +136,26 @@ namespace Lab1.MyPaint
             pictureBox1.Width = bmp.Width;
             pictureBox1.Height = bmp.Height;
             pictureBox1.Image = bmp;
+
+            this.FileName = FileName;
+            ImageFormat = format;
+        }
+
+        public enum CanvasTool
+        {
+            Pen,
+            Star
+        }
+
+        private void Canvas_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Canvas_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (MessageBox.Show("Сохранить эских перед закрытием?", "Закрытие", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                Save();
         }
     }
 }

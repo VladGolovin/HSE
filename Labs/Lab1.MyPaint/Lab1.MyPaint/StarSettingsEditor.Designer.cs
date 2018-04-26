@@ -1,6 +1,6 @@
 ﻿namespace Lab1.MyPaint
 {
-    partial class StarSettings
+    partial class StarSettingsEditor
     {
         /// <summary>
         /// Required designer variable.
@@ -80,9 +80,19 @@
             // RadiusBox
             // 
             this.RadiusBox.Location = new System.Drawing.Point(12, 42);
+            this.RadiusBox.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
             this.RadiusBox.Name = "RadiusBox";
             this.RadiusBox.Size = new System.Drawing.Size(120, 20);
             this.RadiusBox.TabIndex = 6;
+            this.RadiusBox.Value = new decimal(new int[] {
+            300,
+            0,
+            0,
+            0});
             // 
             // PointsCountBox
             // 
@@ -90,6 +100,11 @@
             this.PointsCountBox.Name = "PointsCountBox";
             this.PointsCountBox.Size = new System.Drawing.Size(120, 20);
             this.PointsCountBox.TabIndex = 7;
+            this.PointsCountBox.Value = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
             // 
             // StarSettings
             // 
