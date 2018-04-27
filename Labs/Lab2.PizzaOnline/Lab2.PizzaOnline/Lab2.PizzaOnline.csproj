@@ -148,10 +148,14 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Cart.cs" />
+    <Compile Include="Models\CartIndexViewModel.cs" />
+    <Compile Include="Models\CartLine.cs" />
     <Compile Include="Models\Pizza.cs" />
     <Compile Include="Models\PizzaContext.cs" />
     <Compile Include="Models\PizzaDbInitializer.cs" />
@@ -160,6 +164,12 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Images\dragon350x220.png" />
+    <Content Include="Content\Images\gavai350x220.png" />
+    <Content Include="Content\Images\home350x220.png" />
+    <Content Include="Content\Images\margarita_350x220.png" />
+    <Content Include="Content\Images\new-york350x220.png" />
+    <Content Include="Content\Images\peperoni350x220.png" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -194,6 +204,7 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Cart\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

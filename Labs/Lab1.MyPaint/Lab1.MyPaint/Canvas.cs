@@ -23,6 +23,8 @@ namespace Lab1.MyPaint
 
         private ImageFormat ImageFormat;
 
+        private bool HasChanges;
+
         public StarSettings StarSettings = new StarSettings();
 
         public CanvasTool CurrentTool { get; set; }
@@ -69,6 +71,8 @@ namespace Lab1.MyPaint
                 SaveAs();
             else
                 bmp.Save(FileName, ImageFormat);
+
+            HasChanges = false;
         }
 
         public void SaveAs()
@@ -85,6 +89,8 @@ namespace Lab1.MyPaint
 
                 bmp.Save(FileName, ImageFormat);             
             }
+
+            HasChanges = false;
         }
 
         private void pictureBox1_MouseMove(object sender, MouseEventArgs e)
@@ -97,6 +103,8 @@ namespace Lab1.MyPaint
                 oldY = e.Y;
 
                 pictureBox1.Invalidate();
+
+                HasChanges = true;
             }
         }
         
@@ -114,6 +122,8 @@ namespace Lab1.MyPaint
             pictureBox1.Image = bmp;
 
             CurrentTool = CanvasTool.Pen;
+
+            //HasChanges = false;
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
@@ -125,6 +135,8 @@ namespace Lab1.MyPaint
                 g.DrawStar(new Pen(MainForm.CurColor, MainForm.CurWidth), StarSettings.PointsCount, StarSettings.Radius, ((MouseEventArgs)e).X, ((MouseEventArgs)e).Y, StarSettings.Filled);
 
                 pictureBox1.Invalidate();
+
+                //HasChanges = true;
             }
         }
 
@@ -139,6 +151,8 @@ namespace Lab1.MyPaint
 
             this.FileName = FileName;
             ImageFormat = format;
+
+            HasChanges = false;
         }
 
         public enum CanvasTool
@@ -154,8 +168,40 @@ namespace Lab1.MyPaint
 
         private void Canvas_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (MessageBox.Show("Сохранить эских перед закрытием?", "Закрытие", MessageBoxButtons.YesNo) == DialogResult.Yes)
-                Save();
+            if (HasChanges)
+            {
+                var closeResult = MessageBox.Show("Сохранить эских перед закрытием?", "Закрытие", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+
+                switch (closeResult)
+                {
+                    case DialogResult.None:
+                        break;
+                    case DialogResult.OK:
+                        break;
+                    case DialogResult.Cancel:
+                        e.Cancel = true;
+                        break;
+                    case DialogResult.Abort:
+                        break;
+                    case DialogResult.Retry:
+                        break;
+                    case DialogResult.Ignore:
+                        break;
+                    case DialogResult.Yes:
+                        Save();
+                        break;
+                    case DialogResult.No:
+                        break;
+                    default:
+                        break;
+                }
+            }
+       
+        }
+
+        private void pictureBox1_BackgroundImageLayoutChanged(object sender, EventArgs e)
+        {
+            HasChanges = true;
         }
     }
 }

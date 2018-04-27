@@ -26,9 +26,9 @@ namespace Lab1.MyPaint
 
                 double yOuter = oy + radius * Math.Cos(outer);
 
-                double xInner = ox + radius / 2 * Math.Sin(inner);
+                double xInner = ox + radius / 3 * Math.Sin(inner);
 
-                double yInner = oy + radius / 2 * Math.Cos(inner);
+                double yInner = oy + radius / 3 * Math.Cos(inner);
 
                 points.Add(new Point(Convert.ToInt32(xOuter), Convert.ToInt32(yOuter)));
 
