@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<useCaseDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="UseCase">
+  <useCaseModelRootMoniker Id="ddf5ac50-dfbe-4954-8917-76cdbbaa53d4" />
+  <nestedChildShapes>
+    <actorShape Id="d566d9bb-5174-4b9d-a528-082a8f3d6fb2" absoluteBounds="3.625, 2.25, 0.5, 0.5" isReference="false" heightOffset="0">
+      <actorMoniker Id="9169c787-7deb-444c-987d-ec240f24d926" LastKnownName="Actor1" />
+      <relativeChildShapes />
+    </actorShape>
+    <useCaseShape Id="543c6386-dba4-4635-a79e-167e02052837" absoluteBounds="5.375, 1.5, 1.75, 0.75" customColor="238, 237, 131" heightOffset="0">
+      <useCaseMoniker Id="09e6f56b-a362-4830-975f-e664627162fd" LastKnownName="Составление нового расписания" />
+      <relativeChildShapes />
+    </useCaseShape>
+    <useCaseShape Id="4f150e73-3911-4d00-a1e9-616579fa4ad8" absoluteBounds="5.625, 3.25, 1, 0.5" customColor="238, 237, 131" heightOffset="0">
+      <useCaseMoniker Id="6ac514dc-2afd-4390-af59-e06d6367b487" LastKnownName="Внесение изменений " />
+      <relativeChildShapes />
+    </useCaseShape>
+  </nestedChildShapes>
+</useCaseDiagram>

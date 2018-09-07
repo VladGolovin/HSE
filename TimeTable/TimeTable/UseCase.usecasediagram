@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<useCaseModelRoot xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm5="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" xmlns:dm9="http://schemas.microsoft.com/dsltools/LogicalClassDesigner" xmlns:dm10="http://schemas.microsoft.com/dsltools/SimpleShapesModel" dslVersion="1.0.0.0" Id="ddf5ac50-dfbe-4954-8917-76cdbbaa53d4" name="UseCase" linkedPackageId="241a3008-6a09-4465-b86e-7bb887d60ac0" xmlns="http://schemas.microsoft.com/dsltools/UseCaseModel">
+  <profileInstances>
+    <packageHasProfileInstances Id="886e3a0d-d30d-48a4-a6be-36679c160978">
+      <profileInstance Id="13bd9e11-6c28-479e-9875-61b883c5e9d4" name="StandardProfileL2">
+        <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+      </profileInstance>
+      <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+    </packageHasProfileInstances>
+    <packageHasProfileInstances Id="332bdafb-dbe0-4e05-910d-aa48601a44b2">
+      <profileInstance Id="805e074c-42d4-4c45-8211-9f24911bab45" name="StandardProfileL3">
+        <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+      </profileInstance>
+      <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+    </packageHasProfileInstances>
+  </profileInstances>
+  <packagedElements>
+    <useCaseModelRootHasTypes>
+      <actor Id="9169c787-7deb-444c-987d-ec240f24d926" name="Actor1" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="e148f140-2fea-4f8a-88ec-f81cea114884" />
+      </actor>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="09e6f56b-a362-4830-975f-e664627162fd" name="Составление нового расписания" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="26e61c68-3f67-4820-a75d-9ff5b77429da" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="6ac514dc-2afd-4390-af59-e06d6367b487" name="Внесение изменений " isAbstract="false" isLeaf="false">
+        <elementDefinition Id="95e0e40e-3373-454b-97ec-ea8957d31c89" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+  </packagedElements>
+  <package Id="241a3008-6a09-4465-b86e-7bb887d60ac0" name="TimeTable">
+    <elementDefinition Id="e491ca3a-4c6d-4e71-a025-28b5c4e5d2e7" />
+  </package>
+</useCaseModelRoot>
