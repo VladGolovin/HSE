@@ -87,9 +87,11 @@
 
             timeTable.ForEach(tuple =>
             {
-                var task = new Tuple<Task, double, double>(tuple.Item2, tuple.Item3, tuple.Item4);
+                var task = Tuple.Create(tuple.Item2, tuple.Item3, tuple.Item4);
 
-                if (hash.TryGetValue(tuple.Item1, out List<Tuple<Task, double, double>> tasks))
+                var tasks = new List<Tuple<Task, double, double>>();
+
+                if (hash.TryGetValue(tuple.Item1, out tasks))
                 {
                     tasks.Add(task);
                 }

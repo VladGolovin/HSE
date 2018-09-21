@@ -68,6 +68,11 @@
                 
                 var order = 1;
 
+                if (tasks.Count == 0)
+                {
+                    plan.Add(Tuple.Create<Executor, Task, double, double>(executor, new Task() { Name = "<Отдыхает>", Duration = 0 }, 0, 0));
+                }
+
                 while (executorTime > 0 && tasks.Count > 0)
                 {
                     var task = tasks.Pop();
