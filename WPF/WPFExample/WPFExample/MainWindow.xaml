@@ -8,15 +8,33 @@
         Title="MainWindow" Height="350" Width="525">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition>
-            </RowDefinition>
-            <RowDefinition>
-            </RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
-        <Button Name="btnButton" Margin="10,20,44,0" Grid.Column="1" Click="btnButton_Click">
-        </Button>
+        <ListBox Name="Winners" Grid.Column="0" Grid.Row="0" Grid.RowSpan="2"></ListBox>
+        <Image Source="Images/Logo.jpg" Grid.Column="1" ></Image>
+        <ListView x:Name="Stages" Grid.Column="2" Grid.RowSpan="2"></ListView>
+        <Grid Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="3">
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Label Name="QuestionText" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"></Label>
+            <Button Name="Answer1" Grid.Row="1" Grid.Column="0" Margin="5" Click="ChooseAnswer"></Button>
+            <Button Name="Answer2" Grid.Row="1" Grid.Column="1" Margin="5" Click="ChooseAnswer"></Button>
+            <Button Name="Answer3" Grid.Row="2" Grid.Column="0" Margin="5" Click="ChooseAnswer"></Button>
+            <Button Name="Answer4" Grid.Row="2" Grid.Column="1" Margin="5" Click="ChooseAnswer"></Button>
+        </Grid>
     </Grid>
 </Window>

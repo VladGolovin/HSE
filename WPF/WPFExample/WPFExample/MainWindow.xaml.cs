@@ -20,25 +20,88 @@ namespace WPFExample
     /// </summary>
     public partial class MainWindow : Window
     {
+        protected QuestionContext Context { get; set; } = new QuestionContext();
+
+        protected Question CurrentQuestion { get; set; }
+
+        protected int Difficulty { get; set; } = 0;
+
         public MainWindow()
         {
             InitializeComponent();
+
+            SetupStages();
+
+            SetupWinners();
+
+            NextQuestion();
+        }
+
+        private void SetupStages()
+        {
+            var stages = new string[] {
+                "3 000 000", "1 500 000", " 800 000",
+                " 400 000", " 200 000", " 100 000",
+                " 50 000", " 25 000", " 15 000",
+                " 10 000", " 5 000", " 3 000",
+                " 2 000", " 1 000", " 500" };
+
+            foreach (var stage in stages)
+            {
+                Stages.Items.Add(new ListBoxItem() { Content = stage });
+            }
+        }
+
+        private void SetupWinners()
+        {
+            Winners.Items.Add(new ListBoxItem() { Content = "Победители:" });
+        }
+
+        private void SetQuestion(Question question)
+        {
+            QuestionText.Content = question.Text;
+
+            Answer1.Content = question.Answer1;
+            Answer2.Content = question.Answer2;
+            Answer3.Content = question.Answer3;
+            Answer4.Content = question.Answer4;
+        }
+
+        private void NextQuestion()
+        {
+            Difficulty++;
+
+            var questionsCount = Context.Questions.Where(question => question.Difficulty == Difficulty).Count();
+
+            var rnd = new Random();
+
+            CurrentQuestion = Context.Questions
+                .Where(question => question.Difficulty == Difficulty)
+                .OrderBy(question => question.Id)
+                .Skip(rnd.Next(questionsCount - 1))
+                .First();
+
+            SetQuestion(CurrentQuestion);
+        }
+
+        private void ChooseAnswer(object sender, RoutedEventArgs e)
+        {
+            var answer = (sender as Button).Content;
+
+            if (answer.Equals(CurrentQuestion.TrueAnswer))
+            {
+                MessageBox.Show("Ответ правильный :)");
+
+                NextQuestion();
+            }
+            else
+            {
+                MessageBox.Show("Вы ответили не верно :(");
+            }
         }
 
         private void btnButton_Click(object sender, RoutedEventArgs e)
         {
-            var cnt = new QuestionContext();
-
-            var importer = new Importer();
-
-            var questions = importer.ReadQuestions();
-
-            foreach (var question in questions)
-            {
-                cnt.Questions.Add(question);
-            }
-
-            cnt.SaveChanges();
         }
     }
 }
