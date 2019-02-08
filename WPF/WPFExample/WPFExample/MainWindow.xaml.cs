@@ -1,20 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+﻿
 
 namespace WPFExample
 {
+    using System;
+    using System.Linq;
+    using System.Windows;
+    using System.Windows.Controls;
+    using System.Windows.Media;
+
     /// <summary>
     /// Логика взаимодействия для MainWindow.xaml
     /// </summary>
@@ -25,6 +18,8 @@ namespace WPFExample
         protected Question CurrentQuestion { get; set; }
 
         protected int Difficulty { get; set; } = 0;
+
+        protected bool IsFirstMistake { get; set; } = true;
 
         public MainWindow()
         {
@@ -86,7 +81,9 @@ namespace WPFExample
 
         private void ChooseAnswer(object sender, RoutedEventArgs e)
         {
-            var answer = (sender as Button).Content;
+            var answerBtn = sender as Button;
+
+            var answer = answerBtn.Content;
 
             if (answer.Equals(CurrentQuestion.TrueAnswer))
             {
@@ -96,12 +93,78 @@ namespace WPFExample
             }
             else
             {
-                MessageBox.Show("Вы ответили не верно :(");
+                if (IsFirstMistake)
+                {
+                    DisableButton(MistakeSave);
+
+                    DisableButton(answerBtn);
+
+                    MessageBox.Show("Вы ответили не верно, у вас больше нет права на ошибку :(");
+                }
+                else
+                {
+                    MessageBox.Show("Вы проиграли");
+                }
             }
+
+            ClearAnswersStates();
         }
 
         private void btnButton_Click(object sender, RoutedEventArgs e)
         {
+        }
+
+        private void FiftyFifty_Click(object sender, RoutedEventArgs e)
+        {
+            FiftyFifty.IsEnabled = false;
+
+            var answers = 2;
+            
+            if (!Answer1.Content.ToString().Equals(CurrentQuestion.TrueAnswer))
+            {
+                DisableButton(Answer1);
+
+                answers--;
+            }
+
+            if (!Answer2.Content.ToString().Equals(CurrentQuestion.TrueAnswer))
+            {
+                DisableButton(Answer2);
+
+                answers--;
+            }
+
+            if (!Answer3.Content.ToString().Equals(CurrentQuestion.TrueAnswer) && answers > 0)
+            {
+                DisableButton(Answer3);
+
+                answers--;
+            }
+
+            if (!Answer4.Content.ToString().Equals(CurrentQuestion.TrueAnswer) && answers > 0)
+            {
+                DisableButton(Answer4);
+
+                answers--;
+            }
+        }
+
+        private void ClearAnswersStates()
+        {
+            EnableButton(Answer1);
+            EnableButton(Answer2);
+            EnableButton(Answer3);
+            EnableButton(Answer4);
+        }
+
+        private void DisableButton(Button btn)
+        {
+            btn.IsEnabled = false;
+        }
+
+        private void EnableButton(Button btn)
+        {
+            btn.IsEnabled = true;
         }
     }
 }

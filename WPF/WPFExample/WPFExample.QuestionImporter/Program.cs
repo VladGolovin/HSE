@@ -24,6 +24,10 @@ namespace WPFExample.QuestionImporter
 
             var context = new QuestionContext();
 
+            context.Database.ExecuteSqlCommand("DELETE FROM QUESTIONS", new object[0]);
+
+            context.SaveChanges();
+
             context.Questions.AddRange(questions);
 
             context.SaveChanges();

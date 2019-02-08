@@ -20,6 +20,20 @@
         <ListBox Name="Winners" Grid.Column="0" Grid.Row="0" Grid.RowSpan="2"></ListBox>
         <Image Source="Images/Logo.jpg" Grid.Column="1" ></Image>
         <ListView x:Name="Stages" Grid.Column="2" Grid.RowSpan="2"></ListView>
+        <Grid Grid.Row="1" Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Button Name="FiftyFifty" Grid.Column="0" Grid.Row="0" Margin="5" Click="FiftyFifty_Click">50/50</Button>
+            <Button Name="FriendCall" Grid.Column="0" Grid.Row="1" Margin="5">Звонок</Button>
+            <Button Name="MistakeSave" Grid.Column="1" Grid.Row="0" Margin="5">Ошибка</Button>
+            <Button Name="HallAssistance" Grid.Column="1" Grid.Row="1" Margin="5">Зал</Button>
+        </Grid>
         <Grid Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="3">
             <Grid.RowDefinitions>
                 <RowDefinition></RowDefinition>
@@ -30,7 +44,7 @@
                 <ColumnDefinition></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <Label Name="QuestionText" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"></Label>
+            <Label Name="QuestionText" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" HorizontalContentAlignment="Center"></Label>
             <Button Name="Answer1" Grid.Row="1" Grid.Column="0" Margin="5" Click="ChooseAnswer"></Button>
             <Button Name="Answer2" Grid.Row="1" Grid.Column="1" Margin="5" Click="ChooseAnswer"></Button>
             <Button Name="Answer3" Grid.Row="2" Grid.Column="0" Margin="5" Click="ChooseAnswer"></Button>

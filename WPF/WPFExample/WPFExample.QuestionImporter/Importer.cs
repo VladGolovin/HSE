@@ -27,7 +27,7 @@
                         Answer2 = columns[2],
                         Answer3 = columns[3],
                         Answer4 = columns[4],
-                        TrueAnswer = columns[int.Parse(columns[5]) - 1],
+                        TrueAnswer = columns[int.Parse(columns[5])],
                         Difficulty = int.Parse(columns[6])
                     });
                 }
