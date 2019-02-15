@@ -24,7 +24,7 @@ namespace WPFExample
 
         protected Question CurrentQuestion { get; set; }
 
-        protected int Difficulty { get; set; } = 0;
+        protected int Difficulty { get; set; } = 1;
 
         public MainWindow()
         {
@@ -48,13 +48,13 @@ namespace WPFExample
 
             foreach (var stage in stages)
             {
-                Stages.Items.Add(new ListBoxItem() { Content = stage });
-            }
+                Stages.Items.Add(new ListBoxItem() { Content = stage, Foreground = Brushes.White });
+                }
         }
 
         private void SetupWinners()
         {
-            Winners.Items.Add(new ListBoxItem() { Content = "Победители:" });
+            Winners.Items.Add(new ListBoxItem() { Content = "Победители:",  Foreground = Brushes.White });
         }
 
         private void SetQuestion(Question question)
@@ -69,8 +69,6 @@ namespace WPFExample
 
         private void NextQuestion()
         {
-            Difficulty++;
-
             var questionsCount = Context.Questions.Where(question => question.Difficulty == Difficulty).Count();
 
             var rnd = new Random();
@@ -91,6 +89,10 @@ namespace WPFExample
             if (answer.Equals(CurrentQuestion.TrueAnswer))
             {
                 MessageBox.Show("Ответ правильный :)");
+
+                (Stages.Items[14 - Difficulty - 1] as ListBoxItem).Background = Brushes.Orange;
+
+                Difficulty++;
 
                 NextQuestion();
             }
