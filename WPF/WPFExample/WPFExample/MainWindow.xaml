@@ -7,15 +7,22 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
     <Grid>
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="Black" Offset="0"/>
+                <GradientStop Color="#FF2A2ACD" Offset="1"/>
+            </LinearGradientBrush>
+        </Grid.Background>
         <Grid.ColumnDefinitions>
             <ColumnDefinition></ColumnDefinition>
             <ColumnDefinition></ColumnDefinition>
             <ColumnDefinition></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition></RowDefinition>
-            <RowDefinition></RowDefinition>
-            <RowDefinition></RowDefinition>
+            <RowDefinition Height="106*"></RowDefinition>
+            <RowDefinition Height="50*"></RowDefinition>
+            <RowDefinition Height="56*"/>
+            <RowDefinition Height="107*"></RowDefinition>
         </Grid.RowDefinitions>
         <ListBox Name="Winners" Grid.Column="0" Grid.Row="0" Grid.RowSpan="2"></ListBox>
         <Image Source="Images/Logo.jpg" Grid.Column="1" ></Image>
@@ -34,6 +41,7 @@
             <Button Name="MistakeSave" Grid.Column="1" Grid.Row="0" Margin="5">Ошибка</Button>
             <Button Name="HallAssistance" Grid.Column="1" Grid.Row="1" Margin="5">Зал</Button>
         </Grid>
+        
         <Grid Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="3">
             <Grid.RowDefinitions>
                 <RowDefinition></RowDefinition>
@@ -44,11 +52,11 @@
                 <ColumnDefinition></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <Label Name="QuestionText" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" HorizontalContentAlignment="Center"></Label>
-            <Button Name="Answer1" Grid.Row="1" Grid.Column="0" Margin="5" Click="ChooseAnswer"></Button>
-            <Button Name="Answer2" Grid.Row="1" Grid.Column="1" Margin="5" Click="ChooseAnswer"></Button>
-            <Button Name="Answer3" Grid.Row="2" Grid.Column="0" Margin="5" Click="ChooseAnswer"></Button>
-            <Button Name="Answer4" Grid.Row="2" Grid.Column="1" Margin="5" Click="ChooseAnswer"></Button>
+            <Label Name="QuestionText" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Background="#FFE4AC1D" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="5" BorderBrush="White"></Label>
+            <Button Name="Answer1" Grid.Row="1" Grid.Column="0" Margin="5" Click="ChooseAnswer" Background="#FFE4AC1D" BorderBrush="White"></Button>
+            <Button Name="Answer2" Grid.Row="1" Grid.Column="1" Margin="5" Click="ChooseAnswer" Background="#FFE4AC1D" BorderBrush="White"></Button>
+            <Button Name="Answer3" Grid.Row="2" Grid.Column="0" Margin="5" Click="ChooseAnswer" Background="#FFE4AC1D" BorderBrush="White"></Button>
+            <Button Name="Answer4" Grid.Row="2" Grid.Column="1" Margin="5" Click="ChooseAnswer" Background="#FFE4AC1D" BorderBrush="White" ></Button>
         </Grid>
     </Grid>
 </Window>
