@@ -54,6 +54,14 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\WFPExample.Objects\WFPExample.Objects.csproj">
+      <Project>{d34381c7-aef9-4c6a-94e7-56830d70a3a3}</Project>
+      <Name>WFPExample.Objects</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WPFExample.QuestionImporter\WPFExample.QuestionImporter.csproj">
+      <Project>{de7af2a9-002a-45c1-95f0-989e856b1a72}</Project>
+      <Name>WPFExample.QuestionImporter</Name>
+    </ProjectReference>
     <ProjectReference Include="..\WPFExample\WPFExample.csproj">
       <Project>{e40ec5d4-4a88-47a0-ac35-5e4ef0bb3910}</Project>
       <Name>WPFExample</Name>

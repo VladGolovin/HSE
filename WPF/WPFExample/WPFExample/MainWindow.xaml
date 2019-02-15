@@ -24,10 +24,10 @@
             <RowDefinition Height="56*"/>
             <RowDefinition Height="107*"></RowDefinition>
         </Grid.RowDefinitions>
-        <ListBox Name="Winners" Grid.Column="0" Grid.Row="0" Grid.RowSpan="2"></ListBox>
-        <Image Source="Images/Logo.jpg" Grid.Column="1" ></Image>
-        <ListView x:Name="Stages" Grid.Column="2" Grid.RowSpan="2"></ListView>
-        <Grid Grid.Row="1" Grid.Column="1">
+        <ListBox Name="Winners" Grid.Column="0" Grid.Row="0" Grid.RowSpan="3" Background="{x:Null}" BorderThickness="0"></ListBox>
+        <Image Source="Images/Logo.png" Grid.Column="1" ></Image>
+        <ListView x:Name="Stages" Grid.Column="2" Grid.RowSpan="3" OpacityMask="Black" Background="{x:Null}" BorderThickness="0" FontSize="16pt"/>
+        <Grid Grid.Row="1" Grid.Column="1" Grid.RowSpan="2">
             <Grid.RowDefinitions>
                 <RowDefinition></RowDefinition>
                 <RowDefinition></RowDefinition>
@@ -36,10 +36,10 @@
                 <ColumnDefinition></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <Button Name="FiftyFifty" Grid.Column="0" Grid.Row="0" Margin="5" Click="FiftyFifty_Click">50/50</Button>
-            <Button Name="FriendCall" Grid.Column="0" Grid.Row="1" Margin="5">Звонок</Button>
-            <Button Name="MistakeSave" Grid.Column="1" Grid.Row="0" Margin="5">Ошибка</Button>
-            <Button Name="HallAssistance" Grid.Column="1" Grid.Row="1" Margin="5">Зал</Button>
+            <Button Name="FiftyFifty" Grid.Column="0" Grid.Row="0" Margin="5" Click="FiftyFifty_Click" FontSize="16pt">50/50</Button>
+            <Button Name="FriendCall" Grid.Column="0" Grid.Row="1" Margin="5" FontSize="16pt">Звонок</Button>
+            <Button Name="MistakeSave" Grid.Column="1" Grid.Row="0" Margin="5" FontSize="16pt">Ошибка</Button>
+            <Button Name="HallAssistance" Grid.Column="1" Grid.Row="1" Margin="5" FontSize="16pt">Зал</Button>
         </Grid>
         
         <Grid Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="3">
@@ -52,11 +52,11 @@
                 <ColumnDefinition></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <Label Name="QuestionText" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Background="#FFE4AC1D" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="5" BorderBrush="White"></Label>
-            <Button Name="Answer1" Grid.Row="1" Grid.Column="0" Margin="5" Click="ChooseAnswer" Background="#FFE4AC1D" BorderBrush="White"></Button>
-            <Button Name="Answer2" Grid.Row="1" Grid.Column="1" Margin="5" Click="ChooseAnswer" Background="#FFE4AC1D" BorderBrush="White"></Button>
-            <Button Name="Answer3" Grid.Row="2" Grid.Column="0" Margin="5" Click="ChooseAnswer" Background="#FFE4AC1D" BorderBrush="White"></Button>
-            <Button Name="Answer4" Grid.Row="2" Grid.Column="1" Margin="5" Click="ChooseAnswer" Background="#FFE4AC1D" BorderBrush="White" ></Button>
+            <Label Name="QuestionText" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Background="#FFE4AC1D" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="5" BorderBrush="White" FontSize="16pt"></Label>
+            <Button Name="Answer1" Grid.Row="1" Grid.Column="0" Margin="5" Click="ChooseAnswer" Background="#FFE4AC1D" BorderBrush="White" FontSize="16pt"></Button>
+            <Button Name="Answer2" Grid.Row="1" Grid.Column="1" Margin="5" Click="ChooseAnswer" Background="#FFE4AC1D" BorderBrush="White" FontSize="16pt"></Button>
+            <Button Name="Answer3" Grid.Row="2" Grid.Column="0" Margin="5" Click="ChooseAnswer" Background="#FFE4AC1D" BorderBrush="White" FontSize="16pt"></Button>
+            <Button Name="Answer4" Grid.Row="2" Grid.Column="1" Margin="5" Click="ChooseAnswer" Background="#FFE4AC1D" BorderBrush="White" FontSize="16pt"></Button>
         </Grid>
     </Grid>
 </Window>

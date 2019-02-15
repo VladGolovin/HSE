@@ -64,17 +64,24 @@ namespace WPFExample
 
         private void NextQuestion()
         {
-            var questionsCount = Context.Questions.Where(question => question.Difficulty == Difficulty).Count();
+            if (Difficulty == 16)
+            {
+                MessageBox.Show("Вы выйграли!!!");
+            }
+            else
+            {
+                var questionsCount = Context.Questions.Where(question => question.Difficulty == Difficulty).Count();
 
-            var rnd = new Random();
+                var rnd = new Random();
 
-            CurrentQuestion = Context.Questions
-                .Where(question => question.Difficulty == Difficulty)
-                .OrderBy(question => question.Id)
-                .Skip(rnd.Next(questionsCount - 1))
-                .First();
+                CurrentQuestion = Context.Questions
+                    .Where(question => question.Difficulty == Difficulty)
+                    .OrderBy(question => question.Id)
+                    .Skip(rnd.Next(questionsCount - 1))
+                    .First();
 
-            SetQuestion(CurrentQuestion);
+                SetQuestion(CurrentQuestion);
+            }
         }
 
         private void ChooseAnswer(object sender, RoutedEventArgs e)
@@ -87,7 +94,7 @@ namespace WPFExample
             {
                 MessageBox.Show("Ответ правильный :)");
 
-                (Stages.Items[14 - Difficulty - 1] as ListBoxItem).Background = Brushes.Orange;
+                (Stages.Items[14 - Difficulty + 1] as ListBoxItem).Background = Brushes.Orange;
 
                 Difficulty++;
 
