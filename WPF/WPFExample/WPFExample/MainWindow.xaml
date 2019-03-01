@@ -37,9 +37,9 @@
                 <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
             <Button Name="FiftyFifty" Grid.Column="0" Grid.Row="0" Margin="5" Click="FiftyFifty_Click" FontSize="16pt">50/50</Button>
-            <Button Name="FriendCall" Grid.Column="0" Grid.Row="1" Margin="5" FontSize="16pt">Звонок</Button>
+            <Button Name="FriendCall" Grid.Column="0" Grid.Row="1" Margin="5" FontSize="16pt" Click="FriendCall_Click">Звонок</Button>
             <Button Name="MistakeSave" Grid.Column="1" Grid.Row="0" Margin="5" FontSize="16pt">Ошибка</Button>
-            <Button Name="HallAssistance" Grid.Column="1" Grid.Row="1" Margin="5" FontSize="16pt">Зал</Button>
+            <Button Name="HallAssistance" Grid.Column="1" Grid.Row="1" Margin="5" FontSize="16pt" Click="HallAssistance_Click">Зал</Button>
         </Grid>
         
         <Grid Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="3">

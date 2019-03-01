@@ -21,6 +21,10 @@ namespace WPFExample
 
         protected bool IsFirstMistake { get; set; } = true;
 
+        protected bool HallAssistanceAvailable { get; set; } = true;
+
+        protected bool FriendCallAvailable { get; set; } = true;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -44,7 +48,7 @@ namespace WPFExample
             foreach (var stage in stages)
             {
                 Stages.Items.Add(new ListBoxItem() { Content = stage, Foreground = Brushes.White });
-                }
+            }
         }
 
         private void SetupWinners()
@@ -107,6 +111,8 @@ namespace WPFExample
                     DisableButton(MistakeSave);
 
                     DisableButton(answerBtn);
+
+                    IsFirstMistake = false;
 
                     MessageBox.Show("Вы ответили не верно, у вас больше нет права на ошибку :(");
                 }
@@ -174,6 +180,38 @@ namespace WPFExample
         private void EnableButton(Button btn)
         {
             btn.IsEnabled = true;
+        }
+
+        private void FriendCall_Click(object sender, RoutedEventArgs e)
+        {
+            if (FriendCallAvailable)
+            {
+                FriendCallAvailable = false;
+
+                DisableButton(FriendCall);
+
+                var friendCallForm = new FriendCall(CurrentQuestion.Text, CurrentQuestion.TrueAnswer);
+
+                friendCallForm.Show();
+            }
+        }
+
+        private void HallAssistance_Click(object sender, RoutedEventArgs e)
+        {
+            if (HallAssistanceAvailable)
+            {
+                HallAssistanceAvailable = false;
+
+                DisableButton(HallAssistance);
+
+                var hallAssistForm = new HallAssistance(
+                    Answer1.Content.ToString(),
+                    Answer2.Content.ToString(),
+                    Answer3.Content.ToString(),
+                    Answer4.Content.ToString());
+
+                hallAssistForm.Show();
+            }
         }
     }
 }
