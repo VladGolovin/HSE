@@ -17,7 +17,7 @@ namespace WPFExample
 
         protected Question CurrentQuestion { get; set; }
 
-        protected int Difficulty { get; set; } = 1;
+        protected int Difficulty { get; set; } = 15;
 
         protected bool IsFirstMistake { get; set; } = true;
 
@@ -71,6 +71,10 @@ namespace WPFExample
             if (Difficulty == 16)
             {
                 MessageBox.Show("Вы выйграли!!!");
+
+                SaveWinner();
+
+                ResetAppState();
             }
             else
             {
@@ -119,10 +123,49 @@ namespace WPFExample
                 else
                 {
                     MessageBox.Show("Вы проиграли");
+
+                    ResetAppState();
                 }
             }
 
             ClearAnswersStates();
+        }
+
+        private void ResetAppState()
+        {
+            Difficulty = 1;
+
+            ResetStages();
+
+            NextQuestion();
+
+            ClearAnswersStates();
+
+            EnableButton(FiftyFifty);
+
+            EnableButton(FriendCall);
+
+            EnableButton(MistakeSave);
+
+            EnableButton(HallAssistance);
+        }
+
+        private void ResetStages()
+        {
+            foreach (var stage in Stages.Items)
+            {
+                (stage as ListBoxItem).Background = Stages.Background;
+            }
+        }
+
+        private void SaveWinner()
+        {
+            var winnerNameInput = new WinnerNameInput();
+
+            if (winnerNameInput.ShowDialog() == true)
+            {
+                Winners.Items.Add(new ListBoxItem() { Content = winnerNameInput.UserName, Foreground = Brushes.White });
+            }
         }
 
         private void btnButton_Click(object sender, RoutedEventArgs e)
